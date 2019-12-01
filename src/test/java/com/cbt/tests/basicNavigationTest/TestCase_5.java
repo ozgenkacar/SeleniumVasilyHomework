@@ -1,4 +1,4 @@
-package com.cbt.tests;
+package com.cbt.tests.basicNavigationTest;
 
 import com.cbt.utilities.BrowserFactory;
 import com.cbt.utilities.utils.UtilWait;
@@ -7,13 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class TestCase_6 {
+public class TestCase_5 {
     /*
-  Test case #6
-Step 1. Go to https://practicecybertekschool.herokuapp.com
+    Test case #5 Step 1. Go to https://practicecybertekschool.herokuapp.com
 Step 2. Click on “Registration Form”
-Step 3. Enter “user” into username input box.
-Step 4. Verify that warning message is displayed: “The username must be more than 6 and less than 30 characters long”
+Step 3. Enter “123” into last name input box.
+Step 4. Verify that warning message is displayed: “The last name can only consist of alphabetical letters and dash”
 
      */
     public static void main(String[] args) {
@@ -28,14 +27,12 @@ Step 4. Verify that warning message is displayed: “The username must be more t
         link.click();
         UtilWait.wait(2);
 
-
-        WebElement username = driver.findElement(By.name("username"));
-        username.sendKeys("user");
+        WebElement lastname = driver.findElement(By.name("lastname"));
+        lastname.sendKeys("123");
         UtilWait.wait(3);
-
-    // String actualmessage = driver.findElement(By.xpath("/html/body/div/div[2]/div/div/div/div/form/div[3]/div//small[@data-bv-validator='stringLength']")).getText();
-        String actualmessage = driver.findElement((By.xpath("//small[@style='display: block;']"))).getText();
-        String expectedMessage = "The username must be more than 6 and less than 30 characters long";
+  //  String actualmessage = driver.findElement(By.xpath("/html/body/div/div[2]/div/div/div/div/form/div[2]/div//small[@data-bv-validator='regexp']")).getText();
+String actualmessage = driver.findElement((By.xpath("//small[@style='display: block;']"))).getText();
+        String expectedMessage = "The last name can only consist of alphabetical letters and dash";
         UtilWait.wait(3);
         if (actualmessage.equals(expectedMessage)) {
             System.out.println("Pass");
